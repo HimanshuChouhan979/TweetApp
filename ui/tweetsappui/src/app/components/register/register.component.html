@@ -1,0 +1,103 @@
+<div class="bootstrap-wrapper">
+<mat-toolbar> 
+    <h1  routerLink="/" style="font-family: 'Kings', cursive; font-size:34px ;">
+       <mat-icon style="font-size: 34px;" class="mr-3">handshake</mat-icon>tweetApp</h1>
+    <span class="right-spacer"></span>
+   <a  mat-icon-button routerLink="/login">Login</a>       
+</mat-toolbar>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <!-- <div class="container text-center">
+                    <img class="img-fluid" style="width: 100px;" alt="icon" src="/assets/login_bg.jpg"/>
+                </div> -->
+                <div class="alert alert-danger" role="alert" *ngIf="alertMsg!=null">
+                    {{alertMsg}}
+                </div> 
+                <div class="alert alert-success" role="alert" *ngIf="successMsg!=null">
+                    {{successMsg}}
+                </div>   
+                <mat-toolbar>
+                <span mat-mini-fab>
+                <h1 class="text-center">Register here!!</h1>
+                </span>
+                
+                </mat-toolbar>
+            <!---------------creating form  ----------------->
+            <form mt (ngSubmit)="onSubmit()">                
+              
+                             
+                <mat-form-field class="col-12" appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input
+                    [(ngModel)]="userDetails.userName" required name="userName"
+                    type="text" matInput/>
+                </mat-form-field>
+                <mat-form-field class="col-6" appearance="outline">
+                    <mat-label>Firstname</mat-label>
+                    <input
+                    [(ngModel)]="userDetails.firstName" required name="firstName"
+                    type="text" matInput/>
+                </mat-form-field>
+                <mat-form-field class="col-6" appearance="outline">
+                    <mat-label>Lastname</mat-label>
+                    <input
+                    [(ngModel)]="userDetails.lastName" required name="lastName"
+                    type="text" matInput/>
+                </mat-form-field>
+                <mat-form-field class="col-6" appearance="outline">
+                    <mat-label>DOB</mat-label>
+                    <input
+                    [(ngModel)]="userDetails.dateOfBirth" required name="dateOfBirth"
+                    type="date" matInput/>
+                </mat-form-field>
+                <mat-form-field class="col-6" style="width: 100%;">
+                    <mat-label>Gender</mat-label>
+                    <mat-select [(ngModel)]="userDetails.gender" required name="gender">
+                      <mat-option value="Male">MALE</mat-option>
+                      <mat-option value="Female">FEMALE</mat-option>
+                      <mat-option value="NOT SAY">NOT SAY</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+               
+                <mat-form-field class="col-12" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input
+                    [(ngModel)]="userDetails.email" required name="email"
+                    type="text" matInput/>
+                </mat-form-field>
+                <!-- <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Gender</mat-label>
+                    <input
+                    [(ngModel)]="userDetails.gender" required name="gender"
+                    type="text" matInput/>
+                </mat-form-field> -->
+                <mat-form-field class="col-12" appearance="outline">
+                    <mat-label>Contact</mat-label>
+                    <input
+                    [(ngModel)]="userDetails.contactNumber" required name="contactNumber"
+                    type="number" matInput/>
+                </mat-form-field>
+                <mat-form-field class="col-12">
+                    <mat-label>Password</mat-label>
+                    <input 
+                    [(ngModel)]="userDetails.password" required name="userDetails.password"
+                    type="password" matInput/>
+                </mat-form-field>
+                <div class="container  text-center">
+                    <button type="submit" class="full-width" mat-raised-button color="primary">
+                        Register
+                    </button>                    
+                </div>
+               
+            </form>
+
+            </div>
+            <div class="img-right col-5 mx-5">
+        
+            </div>
+        </div>
+    </div>
+</div>

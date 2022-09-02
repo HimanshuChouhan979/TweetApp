@@ -1,0 +1,9 @@
+<mat-toolbar>
+    <span><h1 mat-mini-fab routerLink="/" style="font-family: 'Kings', cursive; font-size:34px ;">
+        <mat-icon style="font-size: 34px;" class="mr-3">handshake</mat-icon>tweetApp</h1></span>
+    <span class="right-spacer"></span>
+    <a  mat-icon-button routerLink="home"><mat-icon  >home</mat-icon>&nbsp;Home</a>     
+    <a  mat-icon-button class="px-5" routerLink="profile"><mat-icon>account_circle</mat-icon>&nbsp;&nbsp;Profile</a>
+    <a mat-icon-button class="px-5" (click)="logoutUser()" > Logout</a>          
+</mat-toolbar>
+

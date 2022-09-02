@@ -1,0 +1,84 @@
+.example-card {
+    max-width: 400px;
+  }
+
+  
+  .card-footer{
+    padding: .75rem 1.25rem;
+     background-color:#fff;
+     border : none;
+  }
+#p0{
+  text-align: left;
+}
+#p1{
+  text-align: right;
+}
+
+.second{
+  /* display: inline-block;
+    vertical-align: top; */
+
+    display: flex;
+  align-items: center;
+}
+ 
+  
+
+  .button-signup {
+    display: inline-block;
+    font-weight: 400;
+    color: #bee4fb;
+    height: auto;
+    width: 78px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    /* BORDER RADIUS */
+    border-radius: 28px 28px 28px 28px;
+  -moz-border-radius: 28px 28px 28px 28px;
+  -webkit-border-radius: 28px 28px 28px 28px;
+  border: 1px solid #1DA1F2;
+  cursor: pointer;
+  background-color: transparent;
+  }
+
+
+.textarea:focus {
+  outline: none;
+} 
+.card-body{
+  padding: 1% 1% 1% 1%;
+}
+.imgCss{
+  padding: 5% 0% 0% 15%;
+}
+.borderCss{
+  border-left: 0px;
+  border-right: 0px;
+  
+}
+.modal-content{
+  border-radius: 1.3rem;
+}
+.modal-footer{
+border:0;
+}
+.verticalLine{
+  border-left: 1px solid black;
+  padding: 25%;
+  margin: 1;
+  margin: 40%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
+.editTextAreaCss{
+  width: 80%;
+  resize:none;
+  border:grey 1px solid;
+  padding: 2%;
+}

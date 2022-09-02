@@ -1,0 +1,57 @@
+<div class="login-container justify-content-center" >
+    <div class="alert alert-danger mt-3" role="alert" *ngIf="alertMsg!=null">
+        <p>{{alertMsg}}</p>
+    </div> 
+    <div class="login_header row">
+      
+        <div class="login_header_left col-5 mx-5">
+            <div class="row ">
+            <mat-icon style="font-size: 70px;margin-top: -10%; color: #173d7b;">handshake</mat-icon>
+            </div>
+            <div>
+           <h1 class="mat-display-4 bg-gradient-success" style="font-family: 'Kings', cursive; color: #173d7b;">tweetApp</h1>
+        
+            </div>
+            <!-- <h2>TweetApp helps you connect and share with people in your life</h2>  -->
+        
+
+
+        <div class="login_header_right">
+            <mat-card class="login_header_right_card">
+                <mat-card-content>
+                    <form #form="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                        <input  [(ngModel)]="credentials.uid" required name="username" placeholder="Username"
+                        type="text" matInput/>
+                    </div>
+                    <div class="row">
+                        <input [(ngModel)]="credentials.password" required name="password" placeholder="Password"
+                        type="password" matInput/>
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="full-width" mat-raised-button color="primary" class="login-button"
+                            [disabled]="form.invalid || form.pending">Login
+                        </button>
+                    </div>
+                    </form>
+                    <div class="row">
+                        <div class="col align-self-start">
+                            <small>
+                                <a  routerLink="/reset">Forgot password?</a>
+                              </small>
+                    </div>
+                    <div class="col align-self-end">
+                    <button mat-raised-button class="create-account" routerLink="/register">Create New Account</button>
+                </div>
+                </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    
+    <div class="login_header_img col-5 mx-5">
+        
+        </div>
+</div>
+</div>
+

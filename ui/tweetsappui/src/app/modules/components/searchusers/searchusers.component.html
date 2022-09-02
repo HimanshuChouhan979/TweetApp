@@ -1,0 +1,20 @@
+
+        <div class="card-body" >
+            <form >
+                <div class="row">
+                        <input [(ngModel)]="searchTerm" name="userName" placeholder="Search by Username  " class="form-control"/>
+                            <!-- (input)="filterList($event)" > -->
+                </div>
+            </form>
+        </div>
+
+
+<div class="my-2" *ngFor="let user of filteredList">
+    <!-- <app-user [user]="user"></app-user> -->
+    <mat-card class="example-card">
+    <mat-card-title>@{{user.userName}}</mat-card-title>
+    <mat-card-subtitle>{{user.firstName}} {{user.lastName}} </mat-card-subtitle>
+    
+   
+  </mat-card>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+      <div class="container col-3 mt-5">
+        <h3>Trending Topics</h3>
+        <app-hashtags></app-hashtags>
+      </div>
+      <div class="col-6 verticalCss"> 
+        
+        <div class="row">
+          <div class="card  rounded-0">
+            <div class="card-body">
+              <div class="row">
+                <div  class="col-2 pr-0">
+                  <img src="assets\user.png" class="imgSize" />
+                </div>
+                <div class="col-9 pl-0" >
+              <form class="pt-2" >
+                <textarea placeholder="Got something to share?" maxlength=144 rows="5" [formControl]="tweetField" style="width: -webkit-fill-available;resize:none;"></textarea>
+                <!-- <h6 class="pull-right">320 characters remaining</h6> -->
+                <button class="btn btn-primary" (click)="tweetFun()"  style="float:right;" type="submit">Tweet</button>          
+              </form>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row " *ngFor="let tweet of allTweets;let i=index">
+            <app-tweets class="col-12 px-0 mt-2 mb-1"  (newItemEvent)="addItem($event)" [tweet]="tweet"></app-tweets>
+        </div>
+    
+      </div>
+ 
+    
+    <div class="container col-3 mt-5">
+      <h3>Users</h3>
+      <app-searchusers></app-searchusers>
+    </div>
+  </div>
+    </div>
+    
+    <router-outlet></router-outlet>
+     

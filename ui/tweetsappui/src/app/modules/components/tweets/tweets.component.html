@@ -1,0 +1,156 @@
+<div class="card borderCss rounded-0">
+    <mat-card>
+      <div class="row">
+        <div class="col-2 pr-0">
+          <img src="assets\user.png" class="imgCss" width="80%" />
+        </div>
+        <div class="col-9 p-2">
+          <span class="card-title" style="color: blue;"><b>{{ tweet.firstName }} {{ tweet.lastName }} </b></span>
+          <div class="second">
+          <p id="p0">@{{tweet.userId}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {{ dataDiff(tweet.time) }}</p>
+          </div>
+          <p class="card-text">{{ tweet.tweetMsg }}</p>
+  
+          <div class="card-footer py-1">
+               <div class="row justify-content-between">
+              <div class="col-3">
+                <span (click)="like()" *ngIf="!(tweet.userId===userName)">
+                  <a *ngIf="!isLikeed" aria-hidden="true"><mat-icon [ngStyle]="{'color':'red'}">favorite_border</mat-icon></a>
+                  <a *ngIf="isLikeed" aria-hidden="true"><mat-icon [ngStyle]="{'color':'red'}">favorite</mat-icon></a>
+                </span>
+                <span *ngIf="(tweet.userId===userName)">                  
+                  <mat-icon [ngStyle]="{'color':'red'}">favorite</mat-icon>
+                </span>
+                <span *ngIf="count >= 0">{{ count }}</span>
+              </div>
+  
+              <div class="col-3">
+                <!-- <i class="fa fa-comment-o" data-toggle="modal" [attr.data-target]="'#Modal' + tweet.id"
+                  aria-hidden="true">
+                </i> -->
+              <a (click)=toggleDisplayDiv()><mat-icon>comment </mat-icon></a>
+              </div>
+              <div class="col-3" *ngIf="(tweet.userId===userName)">                
+                <a data-toggle="modal" [attr.data-target]="'#ModalEdit' + tweet.id" aria-hidden="true"><mat-icon>rate_review</mat-icon></a>                
+              </div>
+              <div class="col-3" *ngIf="(tweet.userId===userName)">
+                <a data-toggle="modal" [attr.data-target]="'#ModalDelete' + tweet.id" aria-hidden="true"><mat-icon>delete_sweep</mat-icon></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div [hidden]="isShowDiv" class="justify-content-center container"> 
+        <div class="row">
+          <mat-card>
+           <div class="p-2 "  *ngFor="let comment of tweet.commentList">
+               <span class="card-title">
+                   <img src="assets\user.png" width="8%" />
+                   <strong>@{{ comment.commentBy }}</strong></span>
+                   
+               <p class="" style="word-wrap: break-word;">
+                 {{ comment.text }}
+               </p>
+             </div>   
+                  
+           
+           <div class="row">              
+               <form >                 
+                 <textarea placeholder="Reply..." maxlength=500 style="width: 100%;" [formControl]="tweetField"
+                   ></textarea>
+                 <!-- <h6 class="pull-right">320 characters remaining</h6> -->
+                 <button class="btn btn-primary full-width" (click)="replyTweet()" style="float: right"
+                   type="submit">
+                   Reply
+                 </button>
+               </form>              
+             </div>
+           </mat-card>     
+           </div>
+         </div>
+    </mat-card>
+  </div>
+  
+  
+
+  
+        
+  
+    <div class="modal fade" id="ModalEdit{{ tweet.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Tweet</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-2">
+              <img src="assets\user.png" width="80%" />
+            </div>
+            <div class="col-10 p-2">
+              <span class="card-title"><b>{{ tweet.firstName }} {{ tweet.lastName }} </b></span><span> @{{ tweet.userId
+                }}</span><span> {{ dataDiff(tweet.time) }}</span>
+              <p class="card-text">
+              <textarea maxlength=144 rows="5" class="editTextAreaCss" [formControl]="editTweet" > </textarea>
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <form class="col-10">
+               <button class="btn btn-primary " data-dismiss="modal" (click)="updateTweet()" style="float: right"
+                  type="submit">
+                  Save changes
+                </button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="ModalDelete{{ tweet.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Tweet ?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-2">
+            <img src="assets\user.png" width="80%" />
+          </div>
+          <div class="col-10 p-2">
+            <span class="card-title"><b>{{ tweet.firstName }} {{ tweet.lastName }} </b></span><span> @{{ tweet.userId
+              }}</span><span> {{ dataDiff(tweet.time) }}</span>
+            <p class="card-text">
+              This can’t be undone and it will be removed permanently from all records/history.
+          
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <form class="col-10">
+              <button class="btn btn-primary " data-dismiss="modal"  style="float: left"
+              class="close" data-dismiss="modal" aria-label="Close">
+              Cancel
+            </button>
+             <button class="btn btn-primary " data-dismiss="modal" (click)="deleteTweet()" style="float: right"
+                type="submit">
+                Delete
+              </button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+

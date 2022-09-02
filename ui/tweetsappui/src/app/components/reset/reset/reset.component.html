@@ -1,0 +1,99 @@
+<mat-toolbar> 
+     <h1  routerLink="/" style="font-family: 'Kings', cursive; font-size:34px ;">
+        <mat-icon style="font-size: 34px;" class="mr-3">handshake</mat-icon>tweetApp</h1>
+     <span class="right-spacer"></span>
+    <a  mat-icon-button routerLink="/login">Login</a>     
+    <a  mat-icon-button class="px-5" routerLink="/register">Register</a>    
+</mat-toolbar>
+
+
+<div class="container">
+    <div class="container justify-content-center">
+        <div class="row">
+            <div class="offset-lg-1">               
+                <h1 class="text-center">RESET PASSWORD</h1>
+             </div>   
+            <!---------------creating form  ----------------->
+            <div class="container image_container col-6 text-center">
+                <!-- <img class="img-fluid" style="width: 100px;" alt="icon" src="/assets/reset.jpg"/> -->
+            </div>
+            <div class="col-6">
+            <form (ngSubmit)="onSubmit()" *ngIf="verifyStatus==false  && resetStatus==false && sendOtpStatus==false">               
+                <div class="alert alert-success" role="alert" *ngIf="successMsg!=null">
+                    {{successMsg}}
+                </div>    
+                <div class="alert alert-danger" role="alert" *ngIf="alertMsg!=null">
+                    {{alertMsg}}
+                </div>                
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input
+                    [(ngModel)]="email"  required name="email"
+                    type="text" matInput/>
+                </mat-form-field>
+               
+                
+                    <button type="submit" class="full-width px-2" mat-raised-button color="primary">
+                        Send OTP
+                    </button>                    
+                
+               
+            </form>
+
+            <form (ngSubmit)="onSubmitOtp()" *ngIf="sendOtpStatus==true && verifyStatus==false">               
+                <div class="alert alert-success" role="alert" *ngIf="successMsg!=null">
+                    {{successMsg}}
+                </div>    
+                <div class="alert alert-danger" role="alert" *ngIf="alertMsg!=null">
+                    {{alertMsg}}
+                </div>                
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>OTP</mat-label>
+                    <input
+                    [(ngModel)]="otp" required name="otp"
+                    type="number" matInput/>
+                </mat-form-field>
+               
+                <div class="container  text-center">
+                    <button type="submit" class="full-width" mat-raised-button color="primary">
+                        Verify OTP
+                    </button>                    
+                </div>
+               
+            </form>
+
+            <form  (ngSubmit)="onChangePassword()" *ngIf="verifyStatus==true">               
+                <div class="alert alert-success" role="alert" *ngIf="successMsg!=null">
+                    {{successMsg}}
+                </div>    
+                <div class="alert alert-danger" role="alert" *ngIf="alertMsg!=null">
+                    {{alertMsg}}
+                </div>                
+                <div class="alert alert-danger" role="alert" *ngIf="password1!=password2">
+                    Passwords do not match
+                </div>                
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>New Password</mat-label>
+                    <input
+                    [(ngModel)]="password1" required name="password1"
+                    type="password"  (change)="checkValue()" matInput/>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Confirm Password</mat-label>
+                    <input
+                    [(ngModel)]="password2" required name="password2"
+                    type="password" (change)="checkValue()" matInput/>
+                </mat-form-field>
+               
+                <div class="container  text-center">
+                    <button type="submit" class="full-width" mat-raised-button color="primary" disabled="{{diasbledButton}}">
+                        Reset
+                    </button>                    
+                </div>
+               
+            </form>
+        </div>
+            </div>
+        </div>
+    </div>
+

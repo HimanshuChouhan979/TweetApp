@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+            <h2 class="h3 mb-4 page-title">Profile : @{{userDetails.userId}}</h2>                          
+                    <hr class="my-4" />
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <h4 for="firstname">{{userDetails.name}}</h4>
+                            
+                        </div>
+                       
+                    </div>
+                    <div class="form-group">
+                        <h4 for="inputEmail4">{{userDetails.email}}</h4>
+                        
+                    </div>
+                    <div class="row " *ngFor="let tweet of tweetByUser;let i=index">
+                        <app-tweets class="col-12 px-0 mt-2 mb-1"  (newItemEvent)="addItem($event)" [tweet]="tweet"></app-tweets>
+                    </div>
+                  
+            
+        </div>
+    </div>
+    
+    </div>
